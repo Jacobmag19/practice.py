@@ -1,18 +1,22 @@
-restraunts = ("Canes", "In-N-out", "Chick-fil-a", "Tacobell", "mcdonalds")
+games = {"Super Mario bro's": ["adventure", "2-D platformer", "singleplayer"], "Overwatch": ["fps", "3-D", "multiplayer"], "Inside": ["Horror", "2-D", "singleplayer"], "Portal 2": ["mystery", "3-D", "singleplayer"], "Terraria": ["adventure", "2-D", "singleplayer"]}
+recs = []
 
-new_resraunt = input("what restraunt would you like to add? ")
+print("Welcome to the ShimmyJimmy game recomendation program! Enter A if you would like to give it a try, or Q to quit ")
+def findrec(games) :
+    typ = input("What type of games do you like to play? multiplayer or singleplayer ")
+    genre = input("Enter a genre,(ex: adventure,horror etc) ")
+    for game in games:
+        if games[game][0] == genre and games[game][2] == typ:
+            return game
+    for game in games: 
+        if games[game][0] == genre or games[game][2] == typ:
+            return game
+    return"no game"
+        
+addquit = input("A / Q ")
+while addquit == "A":
+    recs.append(findrec(games))
+    addquit = input("Would you like to try another game? A / or quit? Q ")
 
-def rank_restraunt(new_resraunt, restraunts):
-
- for i in range(len(restraunts)):
-    str = "Do you like A)" + new_resraunt + "or B)" + restraunts[1] + "more? A/B"
-    ranking = input(str)
-    if ranking =="A":
-        restraunts,insert(1, new_resraunt)
-        break
-    elif ranking == "B":
-     continue
-
-    return restraunts
-
-print("Your new ranking is", rank_restraunt(new_resraunt, restraunts))
+print(recs)
+print("Thanks for trying out Shimmy Jimmys game recommendation program! ")
